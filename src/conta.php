@@ -16,12 +16,27 @@ class Conta
     public string $cpfTitular;
     public string $nomeTitular;
     public float $saldo;
+    
+    public function sacar(float $valorASacar)
+    {
+        if ($valorASacar > $this->saldo) {
+            echo "Saldo indisponível";
+        } else {
+            $this->saldo -= $valorASacar;
+        }
+    }
 }
 
+$umaConta = new Conta();
+$umaConta->saldo = 200;
+$segundaConta = new Conta();
+$segundaConta->saldo = 300;
 
-$primeiraConta = new Conta();
-$primeiraConta->cpfTitular='123.456.789-10';
-$primeiraConta->nomeTitular='Adriel';
-$primeiraConta->saldo=1650;
+var_dump($umaConta);  
+echo $umaConta->saldo;
 
-var_dump($primeiraConta);
+$umaConta->sacar(50);
+echo $umaConta->saldo;
+/*armazena o endereço da memória
+$c = $segundaConta;
+var_dump($c); */
